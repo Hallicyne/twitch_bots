@@ -36,14 +36,14 @@ def Main():
 
 	r = open("last_played.txt", "r")
 	last_played = r.read()
-
-	if song_name != last_played:
-		print(f"Change song: {song_name} by {song_artist}")
-		irc.send(f'PRIVMSG #{channel} : Now Playing {song_name} by {song_artist}, visit the artist page: {artist_url}\r\n'.encode('utf-8'))
-		f = open("last_played.txt", "w")
-		f.write(song_name)
-		f.close()
-	else:
-		print("Nothing to update, waiting....")
+	while 0:
+		if song_name != last_played:
+			print(f"Change song: {song_name} by {song_artist}")
+			irc.send(f'PRIVMSG #{channel} : Now Playing {song_name} by {song_artist}, visit the artist page: {artist_url}\r\n'.encode('utf-8'))
+			f = open("last_played.txt", "w")
+			f.write(song_name)
+			f.close()
+		else:
+			print("Nothing to update, waiting....")
 
 Main()
