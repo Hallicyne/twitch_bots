@@ -2,7 +2,7 @@ import spotipy
 import spotipy.util as util
 import socket
 
-def Main():
+def main():
 	scope = "user-read-currently-playing"
 	client_id = ''								# client ID from https://developer.spotify.com/dashboard/applications 
 	client_secret = ''							# client secret from https://developer.spotify.com/dashboard/applications
@@ -46,4 +46,4 @@ def Main():
 		else:
 			print("Nothing to update, waiting....")
 
-Main()
+main()
