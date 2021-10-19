@@ -25,10 +25,10 @@ def Main():
 	irc = socket.socket()
 	irc.connect((server, 6667))
 
-	irc.send('PASS oauth:{} \r\n'.format(password).encode('utf-8'))
-	irc.send('USER {} 0 * : {}}\r\n'.format(bot_owner, username).encode('utf-8'))
-	irc.send('NICK {}}\r\n'.format(nickname).encode('utf-8'))
-	irc.send('JOIN #{}\r\n'.format(channel).encode('utf-8')) 
+	irc.send(f'PASS oauth:{password} \r\n'.encode('utf-8'))
+	irc.send(f'USER {bot_owner} 0 * : {username}}\r\n'.encode('utf-8'))
+	irc.send(f'NICK {nickname}}\r\n'.encode('utf-8'))
+	irc.send(f'JOIN #{channel}\r\n'.encode('utf-8')) 
 	
 	song_name = currentsong['item']['name']
 	song_artist = currentsong['item']['artists'][0]['name']
@@ -38,8 +38,8 @@ def Main():
 	last_played = r.read()
 
 	if song_name != last_played:
-		print("Change song: {} by {}".format(song_name, song_artist))
-		irc.send('PRIVMSG #ota__ : Now Playing {} by {}, visit the artist page: {}\r\n'.format(song_name, song_artist, artist_url).encode('utf-8'))
+		print(f"Change song: {song_name} by {song_artist}")
+		irc.send(f'PRIVMSG #{channel} : Now Playing {song_name} by {song_artist}, visit the artist page: {artist_url}\r\n'.encode('utf-8'))
 		f = open("last_played.txt", "w")
 		f.write(song_name)
 		f.close()
