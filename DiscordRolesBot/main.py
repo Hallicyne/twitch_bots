@@ -55,15 +55,5 @@ def main():
     client.run(discord_token)
 
 
-def checkStreamer(streamer_name):
-    with open("streamers.txt", "r", encoding="utf-8") as f:
-        arr = f.readlines()
-        if streamer_name in arr:
-            print("User exists, skipping")
-            return True
-        else:
-            return False
-
-
 if __name__ == '__main__':
     main()
